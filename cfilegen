@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# script to product a basic main.c entry point file
+
+echo -n "Enter filename: "
+read filename
+echo -n "Enter function type: "
+read funtype
+echo -n "Enter function name, including parameters: "
+read funname
+
+cat <<- EOF > $filename
+#include <stdio.h>
+
+/**
+ * $funname - describe function
+ *
+ * @p1: describe or delete
+ * @p2: describe or delete
+ *
+ * Return: describe
+ *
+ *
+ */
+$funtype $funname
+{
+
+	/* delet this comment, indent return with tab and write your code here */
+
+	return (0);
+}
+EOF
+echo "filename $filename should be in this directory. open with editor to start working on it. file is written under betty standards"
+echo "listing files in current directories: "
+ls -1
