@@ -9,6 +9,17 @@ read funtype
 echo -n "Enter function name, including parameters: "
 read funname
 
+echo -n "Want to add prototype to header file? (y/n): "
+read yesNo
+
+if [[ $yesNo == "y" || $yesNo == "Y" ]]; then
+    echo -n "Please enter header file name (i.e.: main.h): "
+    read headerfile
+    echo $funtype $funname";" >> $headerfile
+    echo -n "Prototype added to headerfile: "
+    tail $headerfile;
+fi
+
 cat <<- EOF > $filename
 #include <stdio.h>
 
