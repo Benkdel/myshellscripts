@@ -12,6 +12,7 @@ read funname
 echo -n "Want to add prototype to header file? (y/n): "
 read yesNo
 
+
 if [[ $yesNo == "y" || $yesNo == "Y" ]]; then
     echo -n "Please enter header file name (i.e.: main.h): "
     read headerfile
@@ -20,27 +21,41 @@ if [[ $yesNo == "y" || $yesNo == "Y" ]]; then
     tail $headerfile;
 fi
 
+if [ $funtype == "void" ]; then
+    ret="";
+elif [ $funtype == "char" ]; then
+    ret="return ('')";
+elif [ $funtype == "string" ]; then
+    ret="return (\"\");"
+else
+    ret="return (0);"
+fi
+
+if [ $funtype == "void" ]; then
+    desret=" none - void function";
+else
+    desret=" describe";
+fi
+
 cat <<- EOF > $filename
 #include <stdio.h>
 
 /**
  * $funname - describe function
  *
- * @p1: describe or delete
- * @p2: describe or delete
+ * @p1: describe variables in this way
  *
- * Return: describe
- *
+ * Return:$desret
  *
  */
 $funtype $funname
 {
 
-	/* delet this comment, indent return with tab and write your code here */
+/* write your code here */
 
-	return (0);
+$ret
 }
 EOF
-echo "filename $filename should be in this directory. open with editor to start working on it. file is written under betty standards"
-echo "listing files in current directories: "
+echo "[[ filename $filename should be in this directory. open with editor to start working on it. file is written under betty standards ]]"
+echo "[[ listing files in current directories: ]]"
 ls -1

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# file to delete temp files without runing rm *~ on console to avoid deleting
+# everything!
+
+
+echo -n "Delete temp files? (y/n)"
+read yesNo
+
+if [[ $yesNo == "y" || $yesNo == "Y" ]]; then
+    rm *~;
+    echo "Temp files deleted";
+    ls -1;
+fi
