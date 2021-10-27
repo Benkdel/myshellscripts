@@ -27,8 +27,10 @@ fi
 
 if [[ $stdio == "y" || $stdio == "Y" ]]; then
     stdio="#include <stdio.h>";
+    stdlib="#include <stdlib.h>";
 else
     stdio="";
+    stdlib="";
 fi
 
 
@@ -51,6 +53,7 @@ fi
 cat <<- EOF > $filename
 $headerfile
 $stdio
+$stdlib
 
 /**
  * $funname - describe function

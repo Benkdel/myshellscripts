@@ -9,6 +9,6 @@ read yesNo
 
 if [[ $yesNo == "y" || $yesNo == "Y" ]]; then
     rm *~;
-    echo "Temp files deleted";
-    ls -1;
+    echo "Temp files deleted!";
+    ls -l;
 fi
